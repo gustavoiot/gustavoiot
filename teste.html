@@ -1,8 +1,51 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+<body onload="startTime()">
 
-<button type="button" onclick="alert('Hello world!')">Click Me!</button>
- 
+<p>Gerador de sinal fictício</p>
+<div id="txt"></div>
+<p> </p>
+
+<p>Sensor disparando periodicamente conforme o sinal</p>
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+<img id="myImage2" src="pic_bulbon.gif" width="100" height="180">
+
+<script>
+function startTime() {
+    var today = new Date();
+
+    var s = today.getSeconds();
+
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    s;
+    var t = setTimeout(startTime, 500);
+    if(s % 5 == 0){
+    changeImage()
+  }  
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("bulbon")) {
+        image.src = "pic_bulboff.gif";
+    } else {
+        image.src = "pic_bulbon.gif";
+    }
+    var image = document.getElementById('myImage2');
+    if (image.src.match("bulboff")) {
+        image.src = "pic_bulbon.gif";
+    } else {
+        image.src = "pic_bulboff.gif";
+    }
+}
+</script>
+</head>
+
+
 </body>
 </html>
