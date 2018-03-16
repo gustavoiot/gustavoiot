@@ -51,9 +51,13 @@ function startTime() {
     document.getElementById('txt').innerHTML =
     s;
     var t = setTimeout(startTime, 500);
-    if(s % 5 == 0){
-    changeImage()
-  }  
+	if(oitudobem == 1){
+		changeImage()
+	}else{
+    	if(s % 5 == 0){
+    		changeImage()
+  		}
+	}
 }
 function checkTime(i) {
     if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
@@ -76,9 +80,7 @@ function changeImage() {
 function entrada(){
 	document.getElementById("valor").submit();
 	var oitudobem = document.getElementById("valor");
-	if(oitudobem == 1){
-		changeImage()
-	}
+
 }
 
 </script>
