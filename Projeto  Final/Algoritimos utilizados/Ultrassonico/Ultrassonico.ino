@@ -13,9 +13,9 @@ Servo servo;
 
 // NodeMCU Pin D1 > TRIGGER | Pin D2 > ECHO
 
-const char* ssid = "NEXT-18ME267";
-const char* password = "di37khu6";
-const char* mqtt_server = "35.227.106.44";
+const char* ssid = "IoT";
+const char* password = "12345678";
+const char* mqtt_server = "35.231.119.5";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -65,7 +65,7 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("connected");
 
-      client.subscribe("topic-iot-cefetmg");
+      client.subscribe("topic-iot-cancela");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -87,7 +87,7 @@ void setup() {
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
-  delay(2000);
+  //delay(2000);
 }
 
 void loop() {
@@ -103,17 +103,17 @@ void loop() {
   duration = pulseIn(ECHO, HIGH);
   distance = (duration / 2) / 29.1;
 
-  Serial.print(distance);
+  Serial.println(distance);
 
-  if (distance >= 10) {
+  if (distance <= 10) {
 
     if (!client.connected()) {
       reconnect();
     }
     Serial.println("Acionado");
     client.loop();
-    client.publish("topic-iot-cefetmg", "25");
-    delay(30000);
+    client.publish("topic-iot-cancela", "Automática");
+    delay(5000);
   }
   delay(1000);
 }
