@@ -1,0 +1,8 @@
+A ideia aqui dessa tarefa foi simular um sensor de ré. Alterando o cliente para trabalhar junto com o sensor de distância.
+Acima de 50 centímetros o cliente não faz nada, as medições de distancia acontecem sem delay.
+Entre 30 e 50 centímetros o cliente publica o valor da distancia a cada 5 segundos.
+Entre 10 e 29 centímetros o cliente publica o valor da distancia a cada 2,5 segundos.
+Abaixo de 10 centímetros a publicação é veita a cada segundo.
+
+Alterações foram feitas no arquivo aula5tarefa.js, deixando aula5.js como backup, também na pasta models, ajustando parâmetros para o
+funcionamento correto do sistema.
